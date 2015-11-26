@@ -1,0 +1,31 @@
+html{
+	background-image: url(images/background.jpg);
+}
+form{
+	width:400px; 
+	margin-right:auto; 
+	margin-left:auto; 
+	margin-top: 9em;
+	
+	/*border:1px solid #000;"         Not really necessary*/
+}
+legend{
+	margin-right:auto; 
+	margin-left:auto; 
+	font-size: 28;
+	color: blue;
+}
+fieldset{
+	margin-right:auto; 
+	margin-left:auto; 
+}
+
+center{
+	font-size: 18;
+	font-style: bold;
+	
+}
+button{
+	font-size: 18;
+	font-style: bold;
+}
