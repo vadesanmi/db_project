@@ -52,6 +52,12 @@ $result = mysql_query($sql);
 
 $_SESSION['first_name'] = mysql_result($result,0,'first_name');
 
+$sql = "SELECT last_name FROM user WHERE
+		username = '$username'";
+$result = mysql_query($sql);
+
+$_SESSION['last_name'] = mysql_result($result,0,'last_name');
+
 
 //dbConnect("database_project");
 $sql = "SELECT * FROM user WHERE

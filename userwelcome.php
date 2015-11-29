@@ -12,7 +12,7 @@
 
 		<legend>'Hello <?php echo $_SESSION['first_name']; ?> </legend>
 		<center>
-			<button onClick = "location.href='loginPage.html'" style="width: 200px; height: 60px" type="button">My Personal Info</button>
+			<button onClick = "location.href='personalinfo.php'" style="width: 200px; height: 60px" type="button">My Personal Info</button>
 			<button onClick = "location.href='signupPage.html'" style="width: 200px; height: 60px" type="button">My Favorite Bands</button>
 			<button onClick = "location.href='loginPage.html'" style="width: 200px; height: 60px" type="button">My Shows</button>
 			<button onClick = "location.href='signupPage.html'" style="width: 200px; height: 60px" type="button">My Albums</button>
