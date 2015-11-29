@@ -1,4 +1,5 @@
 <?php include 'accesscontrol.php'; ?>
+
 <html>
 <head>
   <title>Welcome</title>
@@ -8,7 +9,8 @@
 
   <form name="MY Form"action="Login">
 	<fieldset>
-		<legend>'Hello(Insert User's Name Here) </legend>
+
+		<legend>'Hello <?php echo $_SESSION['first_name']; ?> </legend>
 		<center>
 			<button onClick = "location.href='loginPage.html'" style="width: 200px; height: 60px" type="button">My Personal Info</button>
 			<button onClick = "location.href='signupPage.html'" style="width: 200px; height: 60px" type="button">My Favorite Bands</button>

@@ -4,14 +4,18 @@ include_once 'db.php';
 
 session_start();
 
+/**if(isset($_SESSION['username'])) {
+	redirect_to("userwelcome.php");
+}**/
+
 // Grab the user id and password from either the POST array (user just entered in their credentials), 
 //or from the ongoing SESSION array.
-if(!empty($_POST)){
-	$uid = isset($_POST['uid']) ? $_POST['uid'] : $_SESSION['uid'];
+if(!empty($_POST) or isset($_SESSION['username'])){
+	$username = isset($_POST['username']) ? $_POST['username'] : $_SESSION['username'];
 	$pwd = isset($_POST['pwd']) ? $_POST['pwd'] : $_SESSION['pwd'];
 }
 
-if(!isset($uid)) {
+if(!isset($username)) {
 ?>
 
 <!DOCTYPE html>
@@ -36,12 +40,22 @@ exit;
 After unlogged users are prompted to enter their log-in credentials,
 the script grabs the values and checks if they are a valid user in the database.
 */
-$_SESSION['uid'] = $uid;
+
+dbConnect("database_project"); // Need this before using mysql_query statements!!!
+
+$_SESSION['username'] = $username;
 $_SESSION['pwd'] = $pwd;
 
-dbConnect("sessions");
+$sql = "SELECT first_name FROM user WHERE
+		username = '$username'";
+$result = mysql_query($sql);
+
+$_SESSION['first_name'] = mysql_result($result,0,'first_name');
+
+
+//dbConnect("database_project");
 $sql = "SELECT * FROM user WHERE
-userid = '$uid' AND password = '$pwd'";
+username = '$username' AND password = '$pwd'";
 $result = mysql_query($sql);
 if (!$result) {
 error('A database error occurred while checking your '.
@@ -50,7 +64,7 @@ error('A database error occurred while checking your '.
 }
 
 if (mysql_num_rows($result) == 0) {
-unset($_SESSION['uid']);
+unset($_SESSION['username']);
 unset($_SESSION['pwd']);
 ?>
 
@@ -75,5 +89,6 @@ unset($_SESSION['pwd']);
 exit;
 }
 
-$username = mysql_result($result,0,'fullname');
+$username = mysql_result($result,0,'username');
+
 ?>
